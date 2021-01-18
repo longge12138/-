@@ -4,9 +4,9 @@
    <div>{{name}}</div>
     <router-view/>
     <div class="footerbox" v-show="showfoot">
-      <div class="item">1</div>
-      <div class="item">2</div>
-      <div class="item">3</div>
+      <div class="item" @click="jumpto('home')" :class="{'foucus':cur==='home'}">home</div>
+      <div class="item" @click="jumpto('search')" :class="{'foucus':cur==='search'}">search</div>
+      <div class="item" @click="jumpto('flowerDetail' )" :class="{'foucus':cur==='flowerDetail'}">detail</div>
     </div>
   </div>
 </template>
@@ -16,10 +16,32 @@ export default {
   name: 'App',
   data(){
     return {
-      name:'jack'
+      name:'jack',
+      // cur:'home'
+    }
+  },
+   methods:{
+    jumpto(str){
+      this.$router.push({name:str});
+      // this.cur=str;
     }
   },
   computed:{
+    cur(){
+      // if(this.$route.name==='home'){
+      //   return 'home'
+      // }
+      // if(this.$route.name==='search'){
+      //   return 'search'
+      // }
+      //  if(this.$route.name==='flowerDetail'){
+      //   return 'flowerDetail'
+      // }
+      // return ''
+      return this.$route.name
+      
+
+    },
     showfoot(){
       if(this.$route.name==='welcome'||this.$route.name==='signin'){
         return false
@@ -38,6 +60,9 @@ export default {
 *{
   margin:0;
   padding:0;
+}
+.foucus{
+  background-color:pink;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
