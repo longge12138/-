@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import welcome from '@/components/welcome'
 import signin from '@/components/signin'
 import home from '@/components/home'
-import flowerDetail from '@/components/flowerDetail'
+// import flowerDetail from '@/components/flowerDetail'
+
 import search from '@/components/search'
 
 Vue.use(Router)
@@ -37,7 +38,7 @@ export default new Router({
     {
       path: '/flowerDetail',
       name: 'flowerDetail',
-      component: flowerDetail,
+      component: resolve=>(require(["@/components/flowerDetail"],resolve)),
       meta:{
         notneedfoot:false
       }
