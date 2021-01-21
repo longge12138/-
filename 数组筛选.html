@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>打开控制台</div>
+    <script src="https://unpkg.com/axios@0.21.1/dist/axios.min.js"></script>
+    <script>
+        var arr=[1,2,3,4,5];
+        // arr.forEach(function(item){
+        //     console.log(item)
+        // })
+         var newarr= arr.filter(function(item){
+            // console.log(item);
+            // var tempflag= item>2;
+            // return tempflag
+
+            return item>2
+        });
+        console.log('newarr',newarr,arr);
+
+        axios({
+            method:'get',
+            url:'http://127.0.0.1:3000/api/recomment'
+        }).then((res)=>{
+            console.log('数组',res.data.recomment_list);
+
+           var shaixuan0to95= res.data.recomment_list.filter(function(item){
+                    if(item.price>0&&item.price<=100){
+                        return true
+                    }else{
+                        return false;
+                    }
+            })
+            console.log('shaixuan0to95',shaixuan0to95)
+
+        })
+
+    </script>
+</body>
+</html>

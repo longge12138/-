@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-   <div class="title">这里是router-view之外的地方</div>
-   <div>{{name}}</div>
+   <div class="title">这里是app的router-view之外的地方</div>
+  
     <router-view/>
     <div class="footerbox" v-show="showfoot">
-      <div class="item" @click="jumpto('home')" :class="{'foucus':cur==='home'}">home</div>
-      <div class="item" @click="jumpto('search')" :class="{'foucus':cur==='search'}">search</div>
-      <div class="item" @click="jumpto('flowerDetail' )" :class="{'foucus':cur==='flowerDetail'}">detail</div>
+      <div class="item" @click="jumpto('home')" :class="{'foucus':$route.name==='home'}">home</div>
+      <div class="item" @click="jumpto('search')" :class="{'foucus':$route.name==='search'}">search</div>
+      <div class="item" @click="jumpto('flowerDetail' )" :class="{'foucus':$route.name==='flowerDetail'}">detail</div>
     </div>
   </div>
 </template>
@@ -27,21 +27,7 @@ export default {
     }
   },
   computed:{
-    cur(){
-      // if(this.$route.name==='home'){
-      //   return 'home'
-      // }
-      // if(this.$route.name==='search'){
-      //   return 'search'
-      // }
-      //  if(this.$route.name==='flowerDetail'){
-      //   return 'flowerDetail'
-      // }
-      // return ''
-      return this.$route.name
-      
-
-    },
+   
     showfoot(){
       if(this.$route.name==='welcome'||this.$route.name==='signin'){
         return false
@@ -74,7 +60,7 @@ export default {
   font-size:24px;
 }
 .title{
-  border:1px solid red;
+  // border:1px solid red;
 }
 .footerbox{
   position:fixed;

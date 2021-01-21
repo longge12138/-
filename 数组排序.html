@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        打开控制台
+    </div>
+    <script src="https://unpkg.com/axios@0.21.1/dist/axios.min.js"></script>
+
+    <script>
+        var arr=[2,1,4,6,5];
+        arr.sort(function(a,b){
+            return a-b
+        });
+        console.log('arr',arr)
+        
+
+        axios({
+            method:'get',
+            url:'http://127.0.0.1:3000/api/recomment'
+        }).then((res)=>{
+            console.log('数组',res.data.recomment_list);
+
+            var beifei=JSON.parse(JSON.stringify(res.data.recomment_list))
+            console.log('beifei',beifei);
+            beifei.sort(function(a,b){
+                return a.price-b.price;
+            });
+            console.log('排序后',beifei)
+         
+
+        })
+    </script>
+</body>
+</html>

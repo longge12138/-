@@ -41,7 +41,25 @@ export default new Router({
       component: resolve=>(require(["@/components/flowerDetail"],resolve)),
       meta:{
         notneedfoot:false
-      }
+      },
+      children:[
+        {
+          path: '',
+          name: 'flowerdefault',
+          component: resolve=>(require(["@/components/flowers/flowerdefault"],resolve)),
+        },
+        {
+          path: 'flowera',
+          name: 'flowera',
+          component: resolve=>(require(["@/components/flowers/flowera"],resolve)),
+        },
+        {
+          path: 'flowerb',
+          name: 'flowerb',
+          component: resolve=>(require(["@/components/flowers/flowerb"],resolve)),
+        },
+
+      ],
     },
     {
       path: '/search',
