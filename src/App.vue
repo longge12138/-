@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <div class="title">这里是app的router-view之外的地方</div>
+   <!-- <div class="title">这里是app的router-view之外的地方</div> -->
   
     <router-view/>
     <div class="footerbox" v-show="showfoot">
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   name: 'App',
   data(){
@@ -25,6 +27,40 @@ export default {
       this.$router.push({name:str});
       // this.cur=str;
     }
+  },
+  mounted(){
+    // 查全部cookie
+    // var cookiestr=document.cookie;
+    // console.log('cookiestr',cookiestr);
+
+    // 增加一个cookie
+    // document.cookie="name=jack"
+    // document.cookie="age=18"
+    // document.cookie.age
+
+    // 修改一个cookie
+    // document.cookie="name=rose"
+
+    // 删除一个cookie
+
+    // document.cookie = `name=; expires=${new Date('1920/01/23').toString()}`;
+
+    // 使用插件
+    Cookies.set('name', 'jakc');
+    Cookies.set('age',18);
+
+    // Cookies.set('name', 'tanggaowei', { expires: new Date('1920/01/23').toString() });
+      // Cookies.remove('age'); 
+    var str=Cookies.get('name');
+    console.log('str',str);
+
+    this.$axios({
+      method:'get',
+      url:'/api/vanlist'
+    }).then((res)=>{
+
+    })
+
   },
   computed:{
    
