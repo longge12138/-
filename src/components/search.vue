@@ -9,8 +9,8 @@
             <div class="price">{{item.price}}</div>
           </div>
       </div>
-      <van-overlay :show="showpane" @click="showpane = false">
-        <div class="wrapper" >
+      <van-overlay :show="showpane" class="good">
+        <div class="wrapper" @click="showpane = false">
           <div class="block" @click.stop>
             <div class='item'>
               <van-switch v-model="issort" />
@@ -55,6 +55,11 @@ export default {
       console.log('temp_list',temp_list);
       this.showList=temp_list
 
+      if(this.issort){
+        this.showList.sort(function(a,b){
+          return b.price-a.price
+        })
+      }
 
       this.showpane=false;
     },
